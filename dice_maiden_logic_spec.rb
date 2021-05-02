@@ -38,4 +38,24 @@ describe 'alias_input_pass' do
       expect(alias_input_pass('age')).to eq('2d6 + 1d6')
     end
   end
+  context 'given +dX' do
+    it 'returns an advantage roll where X is the dice sides value' do
+      expect(alias_input_pass('+d20')).to eq('2d20 d1')
+    end
+  end
+  context 'given -dX' do
+    it 'returns a disadvantage roll where X the dice sides value' do
+      expect(alias_input_pass('-d20')).to eq('2d20 kl1')
+    end
+  end
+  context 'given +d%' do
+    it 'returns an advantage roll for a percentile dice in a roll-under system' do
+      expect(alias_input_pass('+d%')).to eq('((2d10kl1-1) *10) + 1d10')
+    end
+  end
+  context 'given -d%' do
+    it 'returns a disadvantage roll for a percentile dice in a roll-under system' do
+      expect(alias_input_pass('-d%')).to eq('((2d10k1-1) *10) + 1d10')
+    end
+  end
 end
