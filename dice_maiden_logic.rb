@@ -4,17 +4,17 @@
 def alias_input_pass(input)
   # Each entry is formatted [/Alias match regex/, "Alias Name", /gsub replacement regex/, "replace with string"]
   alias_input_map = [
-    [/\b\d+dF\b/i, 'Fudge', /\b(\d+)dF\b/i, '\\1d3 f1 t3'], # Fate fudge dice
+    [/\b\d+dF\b/i, 'Fudge', /\b(\d+)dF\b/i, '\\1d3 t3 f1'], # Fate fudge dice
     [/\bSNM\d+\b/i, 'Sunsails', /\bSNM(\d+)\b/i, '\\1d6 ie6 t4'], # Sunsails: New Milennium; Fourth Edition
     [/\b\d+wh\d+\+/i, 'Warhammer', /\b(\d+)wh(\d+)\+/i, '\\1d6 t\\2'], # Warhammer (AoS/40k)
-    [/\b\d+WoD\d+\b/i, 'WoD', /\b(\d+)WoD(\d+)\b/i, '\\1d10 f1 t\\2'], # World of Darkness 4th edition (note: explosions are left off for now)
+    [/\b\d+WoD\d+\b/i, 'WoD', /\b(\d+)WoD(\d+)\b/i, '\\1d10 f1 ie10 t\\2'], # World of Darkness 4th edition (note: explosions are left off for now)
     [/\bdd\d\d\b/i, 'Double Digit', /\bdd(\d)(\d)\b/i, '(1d\\1 * 10) + 1d\\2'], # Rolling one dice for each digit
     [/\bage\b/i, 'AGE System Test', /\b(age)\b/i, '2d6 + 1d6'], # 2d6 plus one drama/dragon/stunt die
     [/\B\+d\d+\b/i, 'Advantage', /\B\+d(\d+)\b/i, '2d\\1 d1'], # Roll two dice of the specified size and keep the highest
     [/\B-d\d+\b/i, 'Disadvantage', /\B-d(\d+)\b/i, '2d\\1 kl1'], # Roll two dice of the specified size and keep the lowest
     [/\B\+d%\B/i, 'Advantage on percentile', /\B\+d%\B/i, '((2d10kl1-1) *10) + 1d10'], # Roll two d10s for the tens column and keep the lowest (roll under system) then add a d10 for the ones
     [/\B-d%\B/i, 'Disadvantage on percentile', /\B-d%\B/i, '((2d10k1-1) *10) + 1d10'], # Roll two d10s for the tens column and keep the highest (roll under system) then add a d10 for the ones
-    [/\b\d+CoD\b/i, 'CoD', /\b(\d+)CoD\b/i, '\\1d10 ie10 t8'], # Chronicles of Darkness
+    [/\b\d+CoD\b/i, 'CoD', /\b(\d+)CoD\b/i, '\\1d10 t8 ie10'], # Chronicles of Darkness
     [/\bd6s\d+\b/i, 'The D6 System', /\bd6s(\d+)\b/i, '\\1d6 + 1d6 ie'], # The D6 System
     [/\bsr\d+\b/i, 'Shadowrun', /\bsr(\d+)\b/i, '\\1d6 t5'], # Shadowrun system
     [/\b\d+d%\B/i, 'Percentile roll', /\b(\d+)d%\B/i, '\\1d100'], # Roll a d100
@@ -23,7 +23,7 @@ def alias_input_pass(input)
   ]
 
   @alias_types = []
-  new_input = input
+  new_input = input.dup
 
   # Run through all aliases and record which ones we use
   alias_input_map.each do |alias_entry|
