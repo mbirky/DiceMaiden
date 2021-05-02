@@ -58,4 +58,34 @@ describe 'alias_input_pass' do
       expect(alias_input_pass('-d%')).to eq('((2d10k1-1) *10) + 1d10')
     end
   end
+  context 'given xd%' do
+    it 'returns a simple shorthand for a d100 roll where x is the number of dice to roll' do
+      expect(alias_input_pass('5d%')).to eq('5d100')
+    end
+  end
+  context 'given snm5' do
+    it 'returns a Sunsails: New Millennium 4th edition roll' do
+      expect(alias_input_pass('snm5')).to eq('5d6 ie6 t4')
+    end
+  end
+  context 'given d6s4' do
+    it 'returns a D6 System roll' do
+      expect(alias_input_pass('d6s4')).to eq('4d6 + 1d6 ie')
+    end
+  end
+  context 'gien sr6' do
+    it 'returns a Shadowrun system roll' do
+      expect(alias_input_pass('sr6')).to eq('6d6 t5')
+    end
+  end
+  context 'given sp4' do
+    it 'returns a Storypath system roll' do
+      expect(alias_input_pass('sp4')).to eq('ul 4d10 t8 ie10')
+    end
+  end
+  context 'given 6yz' do
+    it 'return a Year Zero system roll' do
+      expect(alias_input_pass('6yz')).to eq('6d6 t6')
+    end
+  end
 end

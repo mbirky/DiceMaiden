@@ -162,7 +162,7 @@ in most cases. Below is the complete list of aliases , with example rolls, curre
 
 `-d%` -> `((2d10k1-1) *10) + 1d10` Disadvantage roll for a percentile dice in a roll-under system. Rolls two tens and keeps the highest.
 
-`xd%` -> `d100` Simple shorthand for a d100 roll where x is the number of dice to roll.
+`xd%` -> `xd100` Simple shorthand for a d100 roll where x is the number of dice to roll.
 
 `snm5` -> `5d6 ie6 t4` Sunsails: New Millennium 4th edition. The number represents total dice rolled. Indefinitely explodes on sixes, with a target of four.
 
@@ -170,7 +170,7 @@ in most cases. Below is the complete list of aliases , with example rolls, curre
 
 `sr6` -> `6d6 t5` Shadowrun System. The number represents total dice rolled. Target to hit is 5 or higher.
 
-`sp4` -> `4d10 t8 ie10` Storypath system. The number represents total dice rolled. A d10 system with a target set to 8 and infinite explosion on 10.
+`sp4` -> `ul 4d10 t8 ie10` Storypath system. The number represents total dice rolled. A d10 system with a target set to 8 and infinite explosion on 10.
 
 `6yz` -> `6d6 t6` Year Zero system. The number represents the total dice rolled. A d6 system with a target set to 6.
 
