@@ -23,4 +23,19 @@ describe 'alias_input_pass' do
       expect(alias_input_pass('3df')).to eq('3d3 t3 f1')
     end
   end
+  context 'given 3wh4+' do
+    it 'returns a Warhammer Age of Sigmar/40k style roll' do
+      expect(alias_input_pass('3wh4+')).to eq('3d6 t4')
+    end
+  end
+  context 'given dd34' do
+    it 'returns a Double digit roll' do
+      expect(alias_input_pass('dd34')).to eq('(1d3 * 10) + 1d4')
+    end
+  end
+  context 'given age' do
+    it 'returns an AGE system roll' do
+      expect(alias_input_pass('age')).to eq('2d6 + 1d6')
+    end
+  end
 end
